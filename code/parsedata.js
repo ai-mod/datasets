@@ -2,14 +2,7 @@ const fs = require("fs").promises;
 const moment = require('moment');
 const statsLite = require("stats-lite");
 
-const config = {
-	subredditDataFile: "datasetsThreads.json",
-	scoreResultFile: "datasetScores.json",
-	statsFile: "datasetStats.json",
-	includeApproved: false, //include threads which need to be approved since they are above the threshold but were removed
-	includeNoFlair: false, //include flairs which are 'null' or 'undefined'
-	includeGlobal: true //if flair not in scores.flairs
-}
+const config = require("./config");
 
 const scores = {
 
@@ -45,12 +38,16 @@ const modifiers = {
 
 	age: {
 		minimum: 2, //days
-		maximum: 60
+		maximum: 3000
 	},
 
 	archived: {
 		includeUnArchived: true
-	}
+	},
+
+	includeApproved: false, //include threads which need to be approved since they are above the threshold but were removed
+	includeNoFlair: false, //include flairs which are 'null' or 'undefined'
+	includeGlobal: true //if flair not in scores.flairs
 }
 
 const ignoreFliars = ['request', 'resource'];
@@ -110,13 +107,12 @@ async function filterScores() {
 		}
 
 		if (!belowThreshold && !thread.removed) continue; //if thread is NOT below threshold and thread has NOT been removed
-		if (!config.includeApproved && !belowThreshold && thread.removed) continue;
+		if (!modifiers.includeApproved && !belowThreshold && thread.removed) continue;
 		if (thread.removed && belowThreshold) continue; //if thread has been removed already and IS below threshold
-		if (!flair && !config.includeNoFlair) continue;
-		if (flair in scores.flairs == false && !config.includeGlobal) continue;
-		if (thread.author == "[deleted]") continue; //thread already deleted
+		if (!flair && !modifiers.includeNoFlair) continue;
+		if (flair in scores.flairs == false && !modifiers.includeGlobal) continue;
+		if (thread.author == "[deleted]" || thread.ban_note == 'spam') continue;
 		if (ignoreFliars.indexOf(flair) > -1) continue; //flair has been ignored
-		if (thread.ban_note == 'spam') continue;
 		if (threadAge < modifiers.age.minimum || threadAge > modifiers.age.maximum) continue;
 		if (!thread.archived && !modifiers.archived.includeUnArchived) continue //if thread is NOT archived and we don't set include to true
 
@@ -129,16 +125,13 @@ async function filterScores() {
 			upvotes: upvotes,
 			flair: flair,
 			score: score,
-			threshold: threshold
+			threshold: threshold,
+			age_days: threadAge
 		}
-
-
 
 		if (thread.removed && !belowThreshold) {
 			resultItem.action = 'approve';
 		}
-
-		resultItem.age_days = threadAge;
 
 		belowCount++;
 
@@ -187,21 +180,28 @@ async function calculateStatistics(thread) {
 		upsArr.push(thread.ups);
 		flairsArr.push(thread.link_flair_text);
 
-		if (thread.removed) {flairsRemArr.push(thread.link_flair_text); removedThreads++;}
+		if (thread.removed) {
+			flairsRemArr.push(thread.link_flair_text);
+			removedThreads++;
+		}
 		if (thread.spam) spam++;
 
 	}
 
-	flairsArr.forEach(function(x) { flairsObj[x] = (flairsObj[x] || 0)+1;});
-	flairsRemArr.forEach(function(x) { flairsRemObj[x] = (flairsRemObj[x] || 0)+1;});
+	flairsArr.forEach(function(x) {
+		flairsObj[x] = (flairsObj[x] || 0) + 1;
+	});
+	flairsRemArr.forEach(function(x) {
+		flairsRemObj[x] = (flairsRemObj[x] || 0) + 1;
+	});
 
-	for(let flair in flairsObj) {
+	for (let flair in flairsObj) {
 		let c = flairsObj[flair];
 		let r = flairsRemObj[flair];
 		stats.flairs[flair] = {};
 		stats.flairs[flair].total = c;
 		stats.flairs[flair].removed = r;
-		stats.flairs[flair].removed_perc = r /c * 100;
+		stats.flairs[flair].removed_perc = r / c * 100;
 	}
 
 	stats.threads = {

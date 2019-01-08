@@ -1,58 +1,52 @@
+const fs = require("fs").promises;
 const snoowrap = require('snoowrap');
 const request = require("request-promise");
+const config = require("./config");
 
 const r = new snoowrap({
-	userAgent: '',
-	clientId: "",
-	clientSecret: "",
-	username: "",
-	password: ""
+	userAgent: config.reddit.userAgent,
+	clientId: config.reddit.clientId,
+	clientSecret: config.reddit.clientSecret,
+	username: config.reddit.username,
+	password: config.reddit.password
 });
-
-const fs = require("fs").promises;
-
-let config = {
-	subreddit: "datasets",
-	pushShiftDataFile: "pushshiftData.json",
-	redditFetchFile:"threadsToCrawl.json",
-	subredditDataFile:"datasetsThreads.json",
-	scoreResultFile: "datasetScores.json",
-	threadRemoveLogFile: "datasetRemovedThreads.txt",
-	maxItemsPerRequest:25
-}
 
 async function getDataFromPushShift() {
 
 	let size = 1;
-	let url = "https://elastic.pushshift.io/rs/submissions/_search/?q=(subreddit:"+config.subreddit+")&size="+size;
+	let url = "https://elastic.pushshift.io/rs/submissions/_search/?q=(subreddit:" + config.subreddit + ")&size=" + size;
 
 	let data = await request(url);
-		data = JSON.parse(data);
+	data = JSON.parse(data);
 
 	let maxHits = data.hits.total;
-		url = "https://elastic.pushshift.io/rs/submissions/_search/?q=(subreddit:"+config.subreddit+")&size="+maxHits;
+	url = "https://elastic.pushshift.io/rs/submissions/_search/?q=(subreddit:" + config.subreddit + ")&size=" + maxHits;
 
 	data = await request(url);
 	data = JSON.parse(data);
 
-	await fs.writeFile(config.pushShiftDataFile, JSON.stringify(data,null,4));
+	await fs.writeFile(config.pushShiftDataFile, JSON.stringify(data, null, 4));
 
 }
 
 async function loadPushShiftData() {
-	let data = await fs.readFile(config.pushShiftDataFile,{encoding: "utf-8"});
-		data = JSON.parse(data);
+	let data = await fs.readFile(config.pushShiftDataFile, {
+		encoding: "utf-8"
+	});
+	data = JSON.parse(data);
 	return data;
 }
 
 async function loadThreadsToFetch() {
-	let data = await fs.readFile(config.redditFetchFile,{encoding: "utf-8"});
+	let data = await fs.readFile(config.redditFetchFile, {
+		encoding: "utf-8"
+	});
 	let threads = JSON.parse(data);
 	let threadList = new Set();
 
-		for(let thread of threads) {
-			threadList.add(thread);
-		}
+	for (let thread of threads) {
+		threadList.add(thread);
+	}
 
 	return threadList;
 }
@@ -63,20 +57,19 @@ async function generateThreadFetchList(data) {
 
 	let ids = [];
 
-	for(let hit of data.hits.hits) {
+	for (let hit of data.hits.hits) {
 
 		let id = hit._id;
-			id = parseInt(id).toString(36);
+		id = parseInt(id).toString(36);
 
 		ids.push(id);
 
 	}
 
 	console.log("Writing fetch list to file");
-	await fs.writeFile(config.redditFetchFile, JSON.stringify(ids,null,4));
+	await fs.writeFile(config.redditFetchFile, JSON.stringify(ids, null, 4));
 
 }
-
 
 async function readData() {
 
@@ -90,26 +83,29 @@ async function readData() {
 	for (let thread of threads) {
 		i++;
 	}
-	console.log("total items",i);
+	console.log("total items", i);
 }
 
 async function getThreadsFromReddit(threadList) {
 
-	if(!threadList.size > 0) return;
+	if (!threadList.size > 0) return;
 
 	let i = 0;
 	let ids = "";
-	console.log("Thread list size",threadList.size);
-	threadList.forEach((key,value,set) => {
-		if(i>=config.maxItemsPerRequest) return;
-		ids += "t3_"+key+",";
+	console.log("Thread list size", threadList.size);
+	threadList.forEach((key, value, set) => {
+		if (i >= config.maxItemsPerRequest) return;
+		ids += "t3_" + key + ",";
 		set.delete(key);
 		i++;
 	});
 
-	console.log("threads remaining",threadList.size);
+	console.log("threads remaining", threadList.size);
 
-	let listings = await r.oauthRequest({uri: '/by_id/'+ids, method: 'get'});
+	let listings = await r.oauthRequest({
+		uri: '/by_id/' + ids,
+		method: 'get'
+	});
 
 	await saveDataFromReddit(listings);
 	await getThreadsFromReddit(threadList);
@@ -118,80 +114,58 @@ async function getThreadsFromReddit(threadList) {
 
 async function saveDataFromReddit(listings) {
 
-	let redditData = await fs.readFile(config.subredditDataFile,{encoding: "utf-8"}).catch(() => {return false});
-	if(redditData) {
+	let redditData = await fs.readFile(config.subredditDataFile, {
+		encoding: "utf-8"
+	}).catch(() => {
+		return false
+	});
+	if (redditData) {
 		redditData = JSON.parse(redditData);
 	} else {
 		redditData = [];
 	}
 
-	for(let listing of listings) {
-	
-	/*let data = {
-				ups: listing.ups,
-				num_comments: listing.num_comments,
-				id: listing.id,
-				link_flair_text: listing.link_flair_text,
-				gilded: listing.gilded,
-				is_original_content: listing.is_original_content,
-				created: listing.created,
-				created_utc: listing.created_utc,
-				view_count: listing.view_count,
-				title:listing.title,
-				url: listing.url,
-				permalink: listing.permalink,
-				reports: listing.user_reports,
-				report_reasons: listing.report_reasons,
-				upvote_ratio: listing.upvote_ratio,
-				category: listing.category,
-				approved: listing.approved,
-				approved_by: listing.approved_by,
-				ignore_reports: listing.ignore_reports,
-				banned_at_utc: listing.banned_at_utc,
-				spam: listing.spam,
-				removed: listing.removed,
-				locked: listing.locked,
-				num_reports: listing.num_reports,
-				mod_reason_by: listing.mod_reason_by,
-				removal_reason: listing.removal_reason,
-				ban_note: listing.ban_note,
-				archived: listing.archived,
-				is_self: listing.is_self
-			} */
-
+	for (let listing of listings) {
 		redditData.push(listing);
 		console.log("Saving data for ID: " + listing.id);
 	}
 
-	await fs.writeFile(config.subredditDataFile,JSON.stringify(redditData,null,4));
+	await fs.writeFile(config.subredditDataFile, JSON.stringify(redditData, null, 4));
 
 }
 
 async function getFetchedThreads() {
 
-	let data = await fs.readFile(config.subredditDataFile,{encoding: "utf-8"}).catch(() => {return false;});
-	if(!data) return;
+	let data = await fs.readFile(config.subredditDataFile, {
+		encoding: "utf-8"
+	}).catch(() => {
+		return false;
+	});
+	if (!data) return;
 
 	let threads = JSON.parse(data);
 	let threadList = new Set();
 
-	for(let thread of threads) {
-	threadList.add(thread.id);
+	for (let thread of threads) {
+		threadList.add(thread.id);
 	}
 
 	return threadList;
 
 }
 
-
 async function start(id) {
 
 	console.log("Starting...");
 
-	let exists = await fs.access(config.pushShiftDataFile).then(() => {return true;}).catch(() => {return false;});
+	let exists = await fs.access(config.pushShiftDataFile).then(() => {
+		return true;
+	}).catch(() => {
+		return false;
+	});
 	let data;
 
-	if(exists) {
+	if (exists) {
 		console.log("Pushshift data exists, skipping");
 		data = await loadPushShiftData();
 	} else {
@@ -201,9 +175,13 @@ async function start(id) {
 		data = await loadPushShiftData();
 	}
 
-	exists = await fs.access(config.redditFetchFile).then(() => {return true;}).catch(() => {return false;});
+	exists = await fs.access(config.redditFetchFile).then(() => {
+		return true;
+	}).catch(() => {
+		return false;
+	});
 
-	if(!exists) {
+	if (!exists) {
 		console.log("Generating reddit fetch file");
 		await generateThreadFetchList(data);
 	}
@@ -215,12 +193,12 @@ async function start(id) {
 
 	console.log("Checking already fetched threads");
 
-	for(let thread of threads) {
+	for (let thread of threads) {
 
-		if(fetchedThreads != undefined && fetchedThreads.has(thread)) {
+		if (fetchedThreads != undefined && fetchedThreads.has(thread)) {
 			continue;
 		}
-	
+
 		threadList.add(thread);
 
 	}
@@ -234,7 +212,7 @@ async function start(id) {
 function boot() {
 	console.log("Booting script");
 	start().catch(e => {
-		console.log("ERROR",e);
+		console.log("ERROR", e);
 		console.log("Restarting in 20 seconds");
 		setTimeout(() => boot(), 20000);
 	});
