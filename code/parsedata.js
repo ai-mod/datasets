@@ -137,7 +137,6 @@ async function filterScores() {
 
 		parseData.push(resultItem);
 
-
 	}
 
 	await fs.appendFile(config.scoreResultFile, JSON.stringify(parseData, null, 4));
@@ -163,7 +162,6 @@ async function calculateStatistics(thread) {
 	});
 
 	let threads = JSON.parse(data);
-
 
 	flairsArr = [];
 	flairsRemArr = [];
@@ -200,6 +198,7 @@ async function calculateStatistics(thread) {
 		let r = flairsRemObj[flair];
 		stats.flairs[flair] = {};
 		stats.flairs[flair].total = c;
+		stats.flairs[flair].total_perc = c / totalThreads * 100;
 		stats.flairs[flair].removed = r;
 		stats.flairs[flair].removed_perc = r / c * 100;
 	}
