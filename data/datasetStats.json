@@ -1,181 +1,223 @@
 {
     "flairs": {
         "null": {
-            "total": 3176,
-            "removed": 44,
-            "removed_perc": 1.385390428211587
+            "total": 3264,
+            "total_perc": 35.12699095996556,
+            "removed": 45,
+            "removed_perc": 1.3786764705882353
         },
         "request": {
-            "total": 3295,
-            "removed": 734,
-            "removed_perc": 22.276176024279213
+            "total": 3449,
+            "total_perc": 37.11795092552734,
+            "removed": 756,
+            "removed_perc": 21.919396926645405
         },
         "Now Quandl": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
         },
         "dataset": {
-            "total": 1290,
-            "removed": 43,
-            "removed_perc": 3.3333333333333335
+            "total": 1358,
+            "total_perc": 14.614722341799396,
+            "removed": 224,
+            "removed_perc": 16.49484536082474
         },
         "question": {
-            "total": 369,
-            "removed": 12,
-            "removed_perc": 3.2520325203252036
+            "total": 410,
+            "total_perc": 4.412397761515282,
+            "removed": 67,
+            "removed_perc": 16.34146341463415
         },
         "API": {
-            "total": 52,
-            "removed": 2,
-            "removed_perc": 3.8461538461538463
+            "total": 55,
+            "total_perc": 0.5919070167886353,
+            "removed": 6,
+            "removed_perc": 10.909090909090908
         },
         "Dead": {
             "total": 2,
+            "total_perc": 0.02152389151958674,
             "removed_perc": null
         },
         "resource": {
-            "total": 323,
-            "removed": 10,
-            "removed_perc": 3.0959752321981426
+            "total": 333,
+            "total_perc": 3.583727938011192,
+            "removed": 11,
+            "removed_perc": 3.303303303303303
         },
         "Tool": {
             "total": 5,
+            "total_perc": 0.05380972879896685,
             "removed_perc": null
         },
         "visualization": {
             "total": 47,
-            "removed_perc": null
+            "total_perc": 0.5058114507102884,
+            "removed": 11,
+            "removed_perc": 23.404255319148938
         },
         "survey": {
-            "total": 21,
-            "removed": 5,
-            "removed_perc": 23.809523809523807
+            "total": 25,
+            "total_perc": 0.26904864399483425,
+            "removed": 6,
+            "removed_perc": 24
         },
         "Discussion": {
             "total": 4,
-            "removed_perc": null
+            "total_perc": 0.04304778303917348,
+            "removed": 1,
+            "removed_perc": 25
         },
         "meta": {
             "total": 4,
+            "total_perc": 0.04304778303917348,
             "removed": 1,
             "removed_perc": 25
         },
         "META": {
-            "total": 49,
-            "removed": 2,
-            "removed_perc": 4.081632653061225
+            "total": 53,
+            "total_perc": 0.5703831252690486,
+            "removed": 8,
+            "removed_perc": 15.09433962264151
         },
         "discussion": {
-            "total": 104,
-            "removed": 7,
-            "removed_perc": 6.730769230769231
+            "total": 112,
+            "total_perc": 1.2053379250968574,
+            "removed": 24,
+            "removed_perc": 21.428571428571427
         },
         "tutorial": {
             "total": 2,
+            "total_perc": 0.02152389151958674,
             "removed_perc": null
         },
         "code": {
-            "total": 23,
-            "removed_perc": null
-        },
-        "Paper": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "educational": {
-            "total": 5,
-            "removed": 1,
-            "removed_perc": 20
-        },
-        "scraper": {
-            "total": 1,
+            "total": 28,
+            "total_perc": 0.30133448127421436,
             "removed_perc": null
         },
         "Not Relevant": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed": 1,
             "removed_perc": 100
         },
         "project": {
             "total": 1,
-            "removed_perc": null
+            "total_perc": 0.01076194575979337,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "educational": {
+            "total": 11,
+            "total_perc": 0.11838140335772708,
+            "removed": 1,
+            "removed_perc": 9.090909090909092
         },
         "please set a flair": {
             "total": 109,
-            "removed": 10,
-            "removed_perc": 9.174311926605505
+            "total_perc": 1.1730520878174773,
+            "removed": 81,
+            "removed_perc": 74.31192660550458
         },
         "tools": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
         },
         "DEAD": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
         },
         "Tools": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
         },
         "News": {
             "total": 3,
+            "total_perc": 0.032285837279380114,
             "removed": 1,
             "removed_perc": 33.33333333333333
         },
         "META | Last one of 2016": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
-        },
-        "story": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "request | Cedigaz LNG trade flows.": {
-            "total": 1,
-            "removed": 1,
-            "removed_perc": 100
-        },
-        "April": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "news": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "Meta": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "Testing automod": {
-            "total": 1,
-            "removed_perc": null
-        },
-        "META | January": {
-            "total": 1,
-            "removed": 1,
-            "removed_perc": 100
         },
         "March": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed": 1,
             "removed_perc": 100
         },
         "dataset | bad": {
             "total": 1,
+            "total_perc": 0.01076194575979337,
             "removed_perc": null
+        },
+        "Paper": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "scraper": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed_perc": null
+        },
+        "story": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed_perc": null
+        },
+        "request | Cedigaz LNG trade flows.": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "April": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed_perc": null
+        },
+        "news": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed_perc": null
+        },
+        "Meta": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "Testing automod": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed_perc": null
+        },
+        "META | January": {
+            "total": 1,
+            "total_perc": 0.01076194575979337,
+            "removed": 1,
+            "removed_perc": 100
         }
     },
     "threads": {
-        "total": 8901,
-        "removed": 876,
-        "removed_perc": 9.841590832490732,
-        "spam": 187,
-        "spam_perc": 2.1008875407257612
+        "total": 9292,
+        "removed": 1250,
+        "removed_perc": 13.452432199741713,
+        "spam": 155,
+        "spam_perc": 1.6681015927679725
     },
     "upvotes": {
-        "sum": 65005,
-        "mean": 7.303112009886529,
+        "sum": 67799,
+        "mean": 7.2964916056823075,
         "mode": 1,
         "max": 857,
         "min": 0
