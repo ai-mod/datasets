@@ -4,8 +4,8 @@ const request = require("request-promise");
 const config = require("./config");
 
 const r = new snoowrap({
-	userAgent: config.reddit.userAgent
-	clientId: config.reddit.clientId
+	userAgent: config.reddit.userAgent,
+	clientId: config.reddit.clientId,
 	clientSecret: config.reddit.clientSecret,
 	username: config.reddit.username,
 	password: config.reddit.password

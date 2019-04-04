@@ -4,6 +4,8 @@ const statsLite = require("stats-lite");
 
 const config = require("./config");
 
+let belowCount = 0;
+
 const scores = {
 
 	weight: {
@@ -13,6 +15,7 @@ const scores = {
 	},
 
 	flairs: {
+		
 		request: {
 			upvote: 0.1,
 			num_comments: 0.5,
@@ -28,6 +31,12 @@ const scores = {
 		discussion: {
 			upvote: 0.5,
 			num_comments: 1,
+			scoreThreshold: 3
+		},
+
+		null: {
+			upvote: 1,
+			num_comments: 2,
 			scoreThreshold: 3
 		}
 	}
@@ -56,7 +65,6 @@ const ignoreFliars = ['request', 'resource'];
 async function filterScores() {
 
 	let totalThreads = 0;
-	let belowCount = 0;
 	let results = new Set();
 
 	let data = await fs.readFile(config.subredditDataFile, {
@@ -208,7 +216,8 @@ async function calculateStatistics(thread) {
 		removed: removedThreads,
 		removed_perc: removedThreads / totalThreads * 100,
 		spam: spam,
-		spam_perc: spam / totalThreads * 100
+		spam_perc: spam / totalThreads * 100,
+		below_count: belowCount
 	}
 
 	stats.upvotes = {
