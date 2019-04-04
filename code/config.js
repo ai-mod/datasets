@@ -1,17 +1,17 @@
 const config = {
 
 	subreddit: "datasets",
-	maxItemsPerRequest: 25,
+	maxItemsPerRequest: 100,
 
 	pushShiftDataFile: "../data/pushshiftData.json",
 	redditFetchFile: "../data/threadsToCrawl.json",
 	subredditDataFile: "../data/datasetsThreads.json",
 	scoreResultFile: "../data/datasetScores.json",
-	threadRemoveLogFile: "../data/datasetRemovedThreads.json",
+	threadRemoveLogFile: "../data/datasetsRemovedThreads.json",
 	statsFile: "../data/datasetStats.json",
 
 	reddit: {
-		userAgent: '',
+		userAgent: "",
 		clientId: "",
 		clientSecret: "",
 		username: "",

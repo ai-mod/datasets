@@ -103,7 +103,7 @@ async function getThreadsFromReddit(threadList) {
 	console.log("threads remaining", threadList.size);
 
 	let listings = await r.oauthRequest({
-		uri: '/by_id/' + ids,
+		uri: '/api/info/?id=' + ids,
 		method: 'get'
 	});
 
