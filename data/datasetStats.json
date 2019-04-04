@@ -1,225 +1,226 @@
 {
     "flairs": {
         "null": {
-            "total": 3264,
-            "total_perc": 35.12699095996556,
-            "removed": 45,
-            "removed_perc": 1.3786764705882353
+            "total": 3342,
+            "total_perc": 34.6428941639888,
+            "removed": 607,
+            "removed_perc": 18.162776780371033
         },
         "request": {
-            "total": 3449,
-            "total_perc": 37.11795092552734,
-            "removed": 756,
-            "removed_perc": 21.919396926645405
+            "total": 3580,
+            "total_perc": 37.10998237794133,
+            "removed": 757,
+            "removed_perc": 21.145251396648046
         },
         "Now Quandl": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "dataset": {
-            "total": 1358,
-            "total_perc": 14.614722341799396,
-            "removed": 224,
-            "removed_perc": 16.49484536082474
+            "total": 1427,
+            "total_perc": 14.792163366849797,
+            "removed": 225,
+            "removed_perc": 15.767344078486333
         },
         "question": {
-            "total": 410,
-            "total_perc": 4.412397761515282,
-            "removed": 67,
-            "removed_perc": 16.34146341463415
+            "total": 435,
+            "total_perc": 4.509173836425831,
+            "removed": 68,
+            "removed_perc": 15.632183908045977
         },
         "API": {
-            "total": 55,
-            "total_perc": 0.5919070167886353,
+            "total": 56,
+            "total_perc": 0.5804913444594174,
             "removed": 6,
-            "removed_perc": 10.909090909090908
+            "removed_perc": 10.714285714285714
         },
         "Dead": {
             "total": 2,
-            "total_perc": 0.02152389151958674,
+            "total_perc": 0.02073183373069348,
             "removed_perc": null
         },
+        "educational": {
+            "total": 18,
+            "total_perc": 0.18658650357624132,
+            "removed": 1,
+            "removed_perc": 5.555555555555555
+        },
         "resource": {
-            "total": 333,
-            "total_perc": 3.583727938011192,
+            "total": 344,
+            "total_perc": 3.5658754016792784,
             "removed": 11,
-            "removed_perc": 3.303303303303303
+            "removed_perc": 3.1976744186046515
+        },
+        "visualization": {
+            "total": 59,
+            "total_perc": 0.6115890950554577,
+            "removed": 12,
+            "removed_perc": 20.33898305084746
+        },
+        "META": {
+            "total": 54,
+            "total_perc": 0.559759510728724,
+            "removed": 9,
+            "removed_perc": 16.666666666666664
+        },
+        "discussion": {
+            "total": 124,
+            "total_perc": 1.2853736913029958,
+            "removed": 24,
+            "removed_perc": 19.35483870967742
+        },
+        "code": {
+            "total": 30,
+            "total_perc": 0.31097750596040225,
+            "removed_perc": null
         },
         "Tool": {
             "total": 5,
-            "total_perc": 0.05380972879896685,
+            "total_perc": 0.0518295843267337,
             "removed_perc": null
         },
-        "visualization": {
-            "total": 47,
-            "total_perc": 0.5058114507102884,
-            "removed": 11,
-            "removed_perc": 23.404255319148938
-        },
         "survey": {
-            "total": 25,
-            "total_perc": 0.26904864399483425,
+            "total": 31,
+            "total_perc": 0.32134342282574896,
             "removed": 6,
-            "removed_perc": 24
+            "removed_perc": 19.35483870967742
         },
         "Discussion": {
             "total": 4,
-            "total_perc": 0.04304778303917348,
+            "total_perc": 0.04146366746138696,
             "removed": 1,
             "removed_perc": 25
         },
         "meta": {
             "total": 4,
-            "total_perc": 0.04304778303917348,
+            "total_perc": 0.04146366746138696,
             "removed": 1,
             "removed_perc": 25
         },
-        "META": {
-            "total": 53,
-            "total_perc": 0.5703831252690486,
-            "removed": 8,
-            "removed_perc": 15.09433962264151
-        },
-        "discussion": {
-            "total": 112,
-            "total_perc": 1.2053379250968574,
-            "removed": 24,
-            "removed_perc": 21.428571428571427
-        },
         "tutorial": {
             "total": 2,
-            "total_perc": 0.02152389151958674,
-            "removed_perc": null
-        },
-        "code": {
-            "total": 28,
-            "total_perc": 0.30133448127421436,
-            "removed_perc": null
-        },
-        "Not Relevant": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed": 1,
-            "removed_perc": 100
-        },
-        "project": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed": 1,
-            "removed_perc": 100
-        },
-        "educational": {
-            "total": 11,
-            "total_perc": 0.11838140335772708,
-            "removed": 1,
-            "removed_perc": 9.090909090909092
-        },
-        "please set a flair": {
-            "total": 109,
-            "total_perc": 1.1730520878174773,
-            "removed": 81,
-            "removed_perc": 74.31192660550458
-        },
-        "tools": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed_perc": null
-        },
-        "DEAD": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed_perc": null
-        },
-        "Tools": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed_perc": null
-        },
-        "News": {
-            "total": 3,
-            "total_perc": 0.032285837279380114,
-            "removed": 1,
-            "removed_perc": 33.33333333333333
-        },
-        "META | Last one of 2016": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed_perc": null
-        },
-        "March": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
-            "removed": 1,
-            "removed_perc": 100
-        },
-        "dataset | bad": {
-            "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.02073183373069348,
             "removed_perc": null
         },
         "Paper": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed": 1,
             "removed_perc": 100
         },
         "scraper": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
+            "removed_perc": null
+        },
+        "Not Relevant": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "project": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "please set a flair": {
+            "total": 109,
+            "total_perc": 1.1298849383227947,
+            "removed": 81,
+            "removed_perc": 74.31192660550458
+        },
+        "tools": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed_perc": null
+        },
+        "DEAD": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed_perc": null
+        },
+        "Tools": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed_perc": null
+        },
+        "News": {
+            "total": 3,
+            "total_perc": 0.03109775059604022,
+            "removed": 1,
+            "removed_perc": 33.33333333333333
+        },
+        "META | Last one of 2016": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "story": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "request | Cedigaz LNG trade flows.": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed": 1,
             "removed_perc": 100
         },
         "April": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "news": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "Meta": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed": 1,
             "removed_perc": 100
         },
         "Testing automod": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed_perc": null
         },
         "META | January": {
             "total": 1,
-            "total_perc": 0.01076194575979337,
+            "total_perc": 0.01036591686534674,
             "removed": 1,
             "removed_perc": 100
+        },
+        "March": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed": 1,
+            "removed_perc": 100
+        },
+        "dataset | bad": {
+            "total": 1,
+            "total_perc": 0.01036591686534674,
+            "removed_perc": null
         }
     },
     "threads": {
-        "total": 9292,
-        "removed": 1250,
-        "removed_perc": 13.452432199741713,
-        "spam": 155,
-        "spam_perc": 1.6681015927679725
+        "total": 9647,
+        "removed": 1817,
+        "removed_perc": 18.834870944335027,
+        "spam": 140,
+        "spam_perc": 1.4512283611485437,
+        "below_count": 434
     },
     "upvotes": {
-        "sum": 67799,
-        "mean": 7.2964916056823075,
+        "sum": 70437,
+        "mean": 7.3014408624442835,
         "mode": 1,
-        "max": 857,
+        "max": 855,
         "min": 0
     }
 }
